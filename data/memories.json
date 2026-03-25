@@ -5,8 +5,91 @@
         "note": "Un tono café tierra/lodo para representar lo sucio."
     },
     {
+        "color": "hsl(0, 0%, 0%)",
+        "text": "No me acuerdo.",
+        "note": "Negro absoluto para representar el vacío de memoria."
+    },
+    {
+        "color": "hsl(45, 80%, 45%)",
+        "text": "Es las notas: Re Do…",
+        "audio": "assets/sounds/Re-Do.mp3",
+        "note": "Un dorado latón que recuerda a instrumentos de viento o campanas."
+    },
+    {
+        "color": "hsl(145, 50%, 30%)",
+        "text": "El petricor bajo el cedro.",
+        "audio": "assets/sounds/petricor.mp3",
+        "note": "Verde bosque profundo, evocando la humedad y los árboles."
+    },
+    {
+        "color": "hsl(220, 70%, 50%)",
+        "text": "¿Podría ser Dios?",
+        "note": "Azul celestial o litúrgico."
+    },
+    {
         "color": "hsl(340, 70%, 55%)",
         "text": "Sutiles tintes de flor.",
         "class": "watercolor-effect"
+    },
+    {
+        "color": "hsl(0, 0%, 20%)",
+        "text": "El mismo que cuando desconecto.",
+        "audio": "assets/sounds/El-mismo-que-cuando-desconecto.mp3",
+        "note": "Gris carbón oscuro, como una pantalla apagada."
+    },
+    {
+        "color": "hsl(280, 50%, 40%)",
+        "text": "Todavía no los veo.",
+        "note": "Púrpura sombrío, como la vista tratando de enfocarse en la oscuridad."
+    },
+    {
+        "color": "hsl(170, 60%, 35%)",
+        "text": "Más allá de los que entiendo.",
+        "note": "Verde esmeralda oscuro, un color místico y profundo."
+    },
+    {
+        "color": "hsl(200, 90%, 40%)",
+        "text": "Fugaces luces en el centro.",
+        "audio": "assets/sounds/destellos-fugaces.mp3",
+        "note": "Azul noche de ciudad con mucha intensidad."
+    },
+    {
+        "color": "hsl(10, 90%, 45%)",
+        "text": "Muchos minerales en el fuego.",
+        "note": "Naranja rojizo intenso, como brasas de fundición."
+    },
+    {
+        "color": "hsl(260, 40%, 30%)",
+        "text": "Mentiras que laten lejos.",
+        "audio": "assets/sounds/Mentiras-que-laten-a-lo-lejos.mp3",
+        "note": "Violeta muy oscuro, casi negro, para representar la distancia y la falsedad."
+    },
+    {
+        "color": "hsl(190, 100%, 30%)",
+        "text": "A veces es frío y quedo.",
+        "audio": "assets/sounds/A-veces-es-frio-y-quedo.mp3",
+        "note": "Azul gélido profundo, como el hielo bajo el agua."
+    },
+    {
+        "color": "hsl(120, 40%, 20%)",
+        "text": "Intimida cual presencia del cerbero.",
+        "audio": "assets/sounds/Intimida-cual-precencia-del-cerebro.mp3",
+        "note": "Verde musgo oscuro, sombrío y subterráneo."
+    },
+    {
+        "color": "hsl(240, 30%, 25%)",
+        "text": "Solo para mí los reservo.",
+        "note": "Azul marino oscuro, un color de privacidad y secreto."
+    },
+    {
+        "color": "hsl(0, 80%, 35%)",
+        "text": "De solo pensarlo me estremezco",
+        "note": "Rojo intenso/sangre para representar una emoción fuerte."
+    },
+    {
+        "color": "hsl(40, 50%, 40%)",
+        "text": "El de una fotografía de otros tiempos",
+        "class": "special-texture-page",
+        "note": "Sepia oscuro. Aunque use la textura, este color servirá de respaldo."
     }
 ]
