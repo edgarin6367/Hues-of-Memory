@@ -1,0 +1,12 @@
+[
+    {
+        "color": "hsl(25, 40%, 35%)",
+        "text": "Más sucio que un cerdo.",
+        "note": "Un tono café tierra/lodo para representar lo sucio."
+    },
+    {
+        "color": "hsl(340, 70%, 55%)",
+        "text": "Sutiles tintes de flor.",
+        "class": "watercolor-effect"
+    }
+]

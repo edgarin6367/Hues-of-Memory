@@ -1,0 +1,266 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    height: 100%;
+    width: 100%;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow: hidden;
+    background-color: #000;
+}
+
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    z-index: 1000;
+}
+
+.rainbow-progress-bar {
+    position: absolute;
+    width: 500vw;
+    height: 500vh;
+    top: -250vh;
+    left: -250vw;
+    z-index: 1001;
+    background: conic-gradient(from 180deg at 50% 50%,
+            hsl(15, 90%, 70%), hsl(60, 95%, 65%), hsl(130, 85%, 65%), hsl(200, 90%, 65%), hsl(260, 85%, 70%), hsl(320, 90%, 70%),
+            hsl(15, 90%, 70%), hsl(60, 95%, 65%), hsl(130, 85%, 65%), hsl(200, 90%, 65%), hsl(260, 85%, 70%), hsl(320, 90%, 70%),
+            hsl(15, 90%, 70%), hsl(60, 95%, 65%), hsl(130, 85%, 65%), hsl(200, 90%, 65%), hsl(260, 85%, 70%), hsl(320, 90%, 70%),
+            hsl(15, 90%, 70%), hsl(60, 95%, 65%), hsl(130, 85%, 65%), hsl(200, 90%, 65%), hsl(260, 85%, 70%), hsl(320, 90%, 70%),
+            hsl(15, 90%, 70%));
+    box-shadow: inset 0 0 300px rgba(255, 255, 255, 0.3);
+    animation:
+        rainbow-rotate 6s linear infinite,
+        reveal-fade 0.5s ease-in-out 2.5s forwards;
+}
+
+@keyframes rainbow-rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes reveal-fade {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.loading-question {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1005;
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 300;
+    text-align: center;
+    width: 80%;
+    letter-spacing: 0.05em;
+    pointer-events: none;
+    -webkit-text-stroke: 1px #000;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    animation: question-fade 3s ease-in-out forwards;
+}
+
+@keyframes question-fade {
+    0% {
+        opacity: 0;
+        filter: blur(5px);
+    }
+
+    20% {
+        opacity: 1;
+        filter: blur(0);
+    }
+
+    80% {
+        opacity: 1;
+        filter: blur(0);
+    }
+
+    100% {
+        opacity: 0;
+        filter: blur(10px);
+    }
+}
+
+#main-content {
+    width: 100%;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: background-color 2s ease-in-out;
+    padding: 20px;
+    position: relative;
+}
+
+.memory-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    z-index: 2;
+}
+
+.memory-text {
+    color: #fff;
+    font-size: 1.8rem;
+    line-height: 1.5;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 1s ease-out 0.5s, transform 1s ease-out 0.5s;
+}
+
+.visible .memory-text {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hidden {
+    display: none !important;
+}
+
+@media (min-width: 768px) {
+    .memory-text {
+        font-size: 3rem;
+        max-width: 900px;
+    }
+}
+
+.special-texture-page {
+    background-image:
+        radial-gradient(circle, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.2) 100%),
+        url('../assets/old-page-texture.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.special-texture-page .memory-text {
+    color: #2a1b0a;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+.watercolor-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 1;
+    display: none;
+    background: #fff;
+}
+
+.watercolor-effect .watercolor-wrapper {
+    display: block;
+}
+
+.spot {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.6;
+    animation: float-spot 10s infinite alternate ease-in-out;
+}
+
+.spot-1 {
+    width: 450px;
+    /* Era 300px */
+    height: 450px;
+    background: hsl(340, 80%, 80%);
+    /* Rosa principal */
+    top: 15%;
+    left: 10%;
+}
+
+.spot-2 {
+    width: 550px;
+    /* Era 400px */
+    height: 550px;
+    background: hsl(320, 70%, 85%);
+    /* Magenta suave */
+    bottom: -10%;
+    right: -10%;
+    animation-delay: -2s;
+}
+
+.spot-3 {
+    width: 350px;
+    /* Era 250px */
+    height: 350px;
+    background: hsl(15, 90%, 85%);
+    /* Durazno */
+    top: 40%;
+    right: 15%;
+    animation-delay: -5s;
+}
+
+.spot-4 {
+    width: 500px;
+    height: 500px;
+    background: hsl(280, 80%, 85%);
+    /* Lavanda */
+    top: -15%;
+    right: 25%;
+    animation-delay: -3s;
+}
+
+.spot-5 {
+    width: 400px;
+    height: 400px;
+    background: hsl(190, 70%, 85%);
+    /* Cian/Agua */
+    bottom: 25%;
+    left: -10%;
+    animation-delay: -7s;
+}
+
+.spot-6 {
+    width: 300px;
+    height: 300px;
+    background: hsl(150, 60%, 85%);
+    /* Verde Menta */
+    bottom: 5%;
+    left: 45%;
+    animation-delay: -9s;
+}
+
+@keyframes float-spot {
+    from {
+        transform: translate(0, 0) scale(1);
+    }
+
+    to {
+        transform: translate(60px, 80px) scale(1.15);
+    }
+
+    /* Movimiento más amplio */
+}
+
+.watercolor-effect .memory-text {
+    color: #4a3035;
+    text-shadow: none;
+    font-weight: 400;
+}
