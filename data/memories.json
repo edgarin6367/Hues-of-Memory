@@ -56,6 +56,7 @@
     {
         "color": "hsl(10, 90%, 45%)",
         "text": "Muchos minerales en el fuego.",
+        "class": "mineral-fire-effect",
         "note": "Naranja rojizo intenso, como brasas de fundición."
     },
     {
@@ -84,6 +85,7 @@
     {
         "color": "hsl(0, 80%, 35%)",
         "text": "De solo pensarlo me estremezco",
+        "class": "shaking-effect",
         "note": "Rojo intenso/sangre para representar una emoción fuerte."
     },
     {
