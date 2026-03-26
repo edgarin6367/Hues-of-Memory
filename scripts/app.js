@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const memoryText = document.getElementById('memory-text');
 
     let currentAudio = null;
-    let mineralInterval = null;
+    let mineralEmissionInterval = null;
+    let colorCycleInterval = null;
 
     fetch('data/memories.json')
         .then(response => response.json())
@@ -12,24 +13,23 @@ document.addEventListener('DOMContentLoaded', () => {
             const randomMemory = data[Math.floor(Math.random() * data.length)];
 
             mainContent.classList.remove('special-texture-page', 'watercolor-effect', 'shaking-effect', 'mineral-fire-effect');
+            clearMineralEffect();
 
             if (randomMemory.class === 'mineral-fire-effect') {
                 createMineralParticles();
-            } else {
-                document.getElementById('mineral-fire-bg').innerHTML = '';
             }
 
             if (randomMemory.class === 'watercolor-effect') {
                 mainContent.style.backgroundColor = '#ffffff';
             } else {
-                mainContent.style.backgroundColor = randomMemory.color;
+                mainContent.style.backgroundColor = randomMemory.color || '#000';
             }
+
             memoryText.textContent = randomMemory.text;
 
             if (randomMemory.class) {
                 mainContent.classList.add(randomMemory.class);
             }
-
 
             if (randomMemory.audio) {
                 currentAudio = new Audio();
@@ -42,27 +42,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 revealMemory();
 
                 if (currentAudio) {
-                    // 1. Intentamos reproducir directamente
-                    currentAudio.play().catch(error => {
-                        console.warn("Autoplay bloqueado. Esperando interacción del usuario...");
+                    const playAudio = () => {
+                        currentAudio.play()
+                            .then(() => {
+                                document.removeEventListener('click', playAudio);
+                                document.removeEventListener('touchstart', playAudio);
+                                document.removeEventListener('keydown', playAudio);
+                            })
+                            .catch(e => console.warn("Esperando interacción..."));
+                    };
 
-                        // 2. Si falla, creamos una función de desbloqueo único
-                        const unlock = () => {
-                            currentAudio.play()
-                                .then(() => {
-                                    console.log("Audio desbloqueado con éxito");
-                                    // Limpiamos los eventos una vez que funcione
-                                    document.removeEventListener('click', unlock);
-                                    document.removeEventListener('touchstart', unlock);
-                                    document.removeEventListener('keydown', unlock);
-                                })
-                                .catch(e => console.error("Error al reproducir tras interacción:", e));
-                        };
-
-                        // 3. Escuchamos CUALQUIER interacción en el documento
-                        document.addEventListener('click', unlock);
-                        document.addEventListener('touchstart', unlock);
-                        document.addEventListener('keydown', unlock);
+                    currentAudio.play().catch(() => {
+                        document.addEventListener('click', playAudio);
+                        document.addEventListener('touchstart', playAudio);
+                        document.addEventListener('keydown', playAudio);
                     });
                 }
             }, 3000);
@@ -84,45 +77,41 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 50);
     }
 
-    //   particles of fire
-
     function createMineralParticles() {
         const container = document.getElementById('mineral-fire-bg');
-        if (!container || container.children.length > 0) return;
-
-        for (let i = 0; i < 80; i++) {
-            const p = document.createElement('div');
-            const isFront = Math.random() > 0.5;
-            p.className = isFront ? 'particle particle-front' : 'particle particle-back';
-
-            // Posición inicial aleatoria en todo el ancho
-            p.style.left = Math.random() * 100 + '%';
-
-            // Variamos la duración del ascenso para que unas adelanten a otras
-            const duration = Math.random() * 5 + 5 + 's';
-            p.style.animationDuration = `${duration}, 20s, 10s`; // Ascenso, Danza, Color
-
-            p.style.animationDelay = `${Math.random() * -10}s`;
-
-            container.appendChild(p);
-        }
+        if (!container) return;
 
         const minerals = ['copper', 'strontium', 'lead', 'sodium'];
-        let currentIndex = 0;
-        container.setAttribute('data-mineral', minerals[currentIndex]);
+        let currentMineralIndex = 0;
 
-        if (mineralInterval) clearInterval(mineralInterval);
-        mineralInterval = setInterval(() => {
-            currentIndex = (currentIndex + 1) % minerals.length;
-            container.setAttribute('data-mineral', minerals[currentIndex]);
-        }, 5000);
+        colorCycleInterval = setInterval(() => {
+            currentMineralIndex = (currentMineralIndex + 1) % minerals.length;
+        }, 7000);
+
+        mineralEmissionInterval = setInterval(() => {
+            const p = document.createElement('div');
+            const isFront = Math.random() > 0.5;
+            const mineralClass = `mineral-${minerals[currentMineralIndex]}`;
+
+            p.className = `particle ${isFront ? 'particle-front' : 'particle-back'} ${mineralClass}`;
+            p.style.left = Math.random() * 100 + '%';
+
+            const duration = Math.random() * 5 + 2;
+            p.style.animationDuration = `${duration}s, ${Math.random() * 2 + 2}s`;
+
+            container.appendChild(p);
+
+            setTimeout(() => {
+                p.remove();
+            }, duration * 1000);
+
+        }, 70);
     }
 
-    // Función para limpiar el efecto de fuego
     function clearMineralEffect() {
         const container = document.getElementById('mineral-fire-bg');
         if (container) container.innerHTML = '';
-        if (mineralInterval) clearInterval(mineralInterval);
-        container.removeAttribute('data-mineral');
+        if (mineralEmissionInterval) clearInterval(mineralEmissionInterval);
+        if (colorCycleInterval) clearInterval(colorCycleInterval);
     }
 });

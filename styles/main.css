@@ -33,13 +33,8 @@ html {
     background: conic-gradient(from 180deg at 50% 50%,
             hsl(15, 90%, 70%), hsl(60, 95%, 65%), hsl(130, 85%, 65%), hsl(200, 90%, 65%), hsl(260, 85%, 70%), hsl(320, 90%, 70%),
             hsl(15, 90%, 70%), hsl(60, 95%, 65%), hsl(130, 85%, 65%), hsl(200, 90%, 65%), hsl(260, 85%, 70%), hsl(320, 90%, 70%),
-            hsl(15, 90%, 70%), hsl(60, 95%, 65%), hsl(130, 85%, 65%), hsl(200, 90%, 65%), hsl(260, 85%, 70%), hsl(320, 90%, 70%),
-            hsl(15, 90%, 70%), hsl(60, 95%, 65%), hsl(130, 85%, 65%), hsl(200, 90%, 65%), hsl(260, 85%, 70%), hsl(320, 90%, 70%),
             hsl(15, 90%, 70%));
-    box-shadow: inset 0 0 300px rgba(255, 255, 255, 0.3);
-    animation:
-        rainbow-rotate 6s linear infinite,
-        reveal-fade 0.5s ease-in-out 2.5s forwards;
+    animation: rainbow-rotate 6s linear infinite, reveal-fade 0.5s ease-in-out 2.5s forwards;
 }
 
 @keyframes rainbow-rotate {
@@ -70,10 +65,6 @@ html {
     font-weight: 300;
     text-align: center;
     width: 80%;
-    letter-spacing: 0.05em;
-    pointer-events: none;
-    -webkit-text-stroke: 0.5px #ffffff;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     animation: question-fade 3s ease-in-out forwards;
 }
 
@@ -103,21 +94,15 @@ html {
     width: 100%;
     height: 100dvh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    transition: background-color 2s ease-in-out;
-    padding: 20px;
     position: relative;
 }
 
 .memory-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 100%;
-    z-index: 2;
+    z-index: 10;
 }
 
 .memory-text {
@@ -125,7 +110,6 @@ html {
     font-size: 1.8rem;
     line-height: 1.5;
     font-weight: 300;
-    letter-spacing: -0.02em;
     opacity: 0;
     transform: translateY(10px);
     transition: opacity 1s ease-out 0.5s, transform 1s ease-out 0.5s;
@@ -148,12 +132,9 @@ html {
 }
 
 .special-texture-page {
-    background-image:
-        radial-gradient(circle, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.2) 100%),
-        url('../assets/images/old-page-texture.jpg');
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.2) 100%), url('../assets/images/old-page-texture.jpg');
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
 }
 
 .special-texture-page .memory-text {
@@ -167,10 +148,9 @@ html {
     height: 100%;
     top: 0;
     left: 0;
-    overflow: hidden;
-    z-index: 1;
-    display: none;
     background: #fff;
+    display: none;
+    z-index: 1;
 }
 
 .watercolor-effect .watercolor-wrapper {
@@ -187,20 +167,16 @@ html {
 
 .spot-1 {
     width: 450px;
-    /* Era 300px */
     height: 450px;
     background: hsl(340, 80%, 80%);
-    /* Rosa principal */
     top: 15%;
     left: 10%;
 }
 
 .spot-2 {
     width: 550px;
-    /* Era 400px */
     height: 550px;
     background: hsl(320, 70%, 85%);
-    /* Magenta suave */
     bottom: -10%;
     right: -10%;
     animation-delay: -2s;
@@ -208,10 +184,8 @@ html {
 
 .spot-3 {
     width: 350px;
-    /* Era 250px */
     height: 350px;
     background: hsl(16, 89%, 75%);
-    /* Durazno */
     top: 40%;
     right: 15%;
     animation-delay: -5s;
@@ -221,7 +195,6 @@ html {
     width: 500px;
     height: 500px;
     background: hsl(280, 79%, 74%);
-    /* Lavanda */
     top: -15%;
     right: 25%;
     animation-delay: -3s;
@@ -231,7 +204,6 @@ html {
     width: 400px;
     height: 400px;
     background: hsl(190, 86%, 75%);
-    /* Cian/Agua */
     bottom: 25%;
     left: -10%;
     animation-delay: -7s;
@@ -241,7 +213,6 @@ html {
     width: 300px;
     height: 300px;
     background: hsl(150, 84%, 74%);
-    /* Verde Menta */
     bottom: 5%;
     left: 45%;
     animation-delay: -9s;
@@ -255,19 +226,15 @@ html {
     to {
         transform: translate(60px, 80px) scale(1.15);
     }
-
-    /* Movimiento más amplio */
 }
 
 .watercolor-effect .memory-text {
     color: #4a3035;
     text-shadow: none;
-    font-weight: 400;
 }
 
 .shaking-effect .memory-text {
     animation: trembling-text 0.15s infinite alternate ease-in-out;
-    text-shadow: 0 0 5px rgba(255, 0, 0, 0.4);
 }
 
 @keyframes trembling-text {
@@ -299,624 +266,58 @@ html {
     top: 0;
     left: 0;
     overflow: hidden;
-    z-index: 1;
-    /* Detrás del texto */
-    display: none;
-    /* Oculto por defecto */
     background: #000;
-    /* Fondo negro profundo */
-}
-
-/* Se activa solo con la clase especial */
-.mineral-fire-effect .mineral-fire-wrapper {
-    display: block;
-}
-
-/* Estilo base de la partícula (brasa) */
-.particle {
-    position: absolute;
-    bottom: -50px;
-    /* Empiezan fuera de la pantalla por abajo */
-    border-radius: 50%;
-    /* Redondas */
-    filter: blur(4px);
-    /* Difuminadas para parecer luz */
-    opacity: 0;
-    animation: rise-and-fade 8s infinite ease-out;
-}
-
-/* --- Colores de los Minerales --- */
-.mineral-copper {
-    background: hsl(150, 90%, 65%);
-    box-shadow: 0 0 15px hsl(150, 90%, 65%);
-}
-
-/* Verde */
-.mineral-strontium {
-    background: hsl(350, 90%, 60%);
-    box-shadow: 0 0 15px hsl(350, 90%, 60%);
-}
-
-/* Rojo */
-.mineral-lead {
-    background: hsl(210, 90%, 65%);
-    box-shadow: 0 0 15px hsl(210, 90%, 65%);
-}
-
-/* Azul */
-.mineral-sodium {
-    background: hsl(45, 95%, 65%);
-    box-shadow: 0 0 15px hsl(45, 95%, 65%);
-}
-
-/* Amarillo */
-
-/* --- Posiciones y Retrasos Individuales --- */
-.p-1 {
-    width: 15px;
-    height: 15px;
-    left: 15%;
-    animation-delay: 0s;
-}
-
-.p-2 {
-    width: 20px;
-    height: 20px;
-    left: 35%;
-    animation-delay: -1s;
-}
-
-.p-3 {
-    width: 12px;
-    height: 12px;
-    left: 55%;
-    animation-delay: -3s;
-}
-
-.p-4 {
-    width: 18px;
-    height: 18px;
-    left: 75%;
-    animation-delay: -5s;
-}
-
-.p-5 {
-    width: 10px;
-    height: 10px;
-    left: 25%;
-    animation-delay: -2s;
-}
-
-.p-6 {
-    width: 25px;
-    height: 25px;
-    left: 45%;
-    animation-delay: -4s;
-}
-
-.p-7 {
-    width: 15px;
-    height: 15px;
-    left: 65%;
-    animation-delay: -6s;
-}
-
-.p-8 {
-    width: 20px;
-    height: 20px;
-    left: 85%;
-    animation-delay: -7s;
-}
-
-/* Brillo central suave para dar profundidad de fuego */
-.fire-glow {
-    position: absolute;
-    bottom: -150px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(255, 100, 0, 0.4) 0%, rgba(0, 0, 0, 0) 70%);
-    filter: blur(30px);
-    z-index: 0;
-}
-
-/* --- Animación de ascenso y desvanecimiento --- */
-@keyframes rise-and-fade {
-    0% {
-        transform: translateY(0) scale(1);
-        opacity: 0;
-    }
-
-    15% {
-        opacity: 0.8;
-        /* Aparecen rápido */
-    }
-
-    80% {
-        opacity: 0.6;
-        /* Mantienen brillo */
-    }
-
-    100% {
-        transform: translateY(-110vh) scale(0.5);
-        /* Ascienden y se achican */
-        opacity: 0;
-        /* Desaparecen arriba */
-    }
-}
-
-/* --- BUSCA ESTA SECCIÓN AL FINAL DE TU CSS --- */
-
-.mineral-fire-wrapper {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    z-index: 1;
     display: none;
-    background: #000;
+    z-index: 1;
 }
 
 .mineral-fire-effect .mineral-fire-wrapper {
     display: block;
 }
 
-.particle {
-    position: absolute;
-    bottom: -50px;
-    border-radius: 50%;
-    /* Reducimos el blur de 4px a 2px para que se definan más */
-    filter: blur(2px);
-    opacity: 0;
-    /* Usamos 'infinite' y una curva de velocidad compleja para el caos */
-    animation: chaotic-rise 6s infinite cubic-bezier(0.4, 0, 0.6, 1);
-}
-
-/* Colores de los Minerales (Se mantienen) */
 .mineral-copper {
-    background: hsl(150, 95%, 70%);
-    box-shadow: 0 0 10px hsl(150, 95%, 70%);
+    --particle-color: hsl(150, 100%, 60%);
+    --particle-dim: hsl(150, 80%, 20%);
 }
 
 .mineral-strontium {
-    background: hsl(350, 95%, 65%);
-    box-shadow: 0 0 10px hsl(350, 95%, 65%);
+    --particle-color: hsl(350, 100%, 60%);
+    --particle-dim: hsl(350, 80%, 20%);
 }
 
 .mineral-lead {
-    background: hsl(210, 95%, 70%);
-    box-shadow: 0 0 10px hsl(210, 95%, 70%);
+    --particle-color: hsl(210, 100%, 60%);
+    --particle-dim: hsl(210, 80%, 20%);
 }
 
 .mineral-sodium {
-    background: hsl(45, 95%, 70%);
-    box-shadow: 0 0 10px hsl(45, 95%, 70%);
-}
-
-/* --- TAMAÑOS Y RETRASOS INDIVIDUALES (30 Partículas) --- */
-/* Masificamos los retrasos para que el flujo sea continuo */
-.p-1 {
-    width: 10px;
-    height: 10px;
-    left: 10%;
-    animation-delay: -0.2s;
-}
-
-.p-2 {
-    width: 15px;
-    height: 15px;
-    left: 20%;
-    animation-delay: -1.5s;
-}
-
-.p-3 {
-    width: 8px;
-    height: 8px;
-    left: 30%;
-    animation-delay: -3.1s;
-}
-
-.p-4 {
-    width: 12px;
-    height: 12px;
-    left: 40%;
-    animation-delay: -4.7s;
-}
-
-.p-5 {
-    width: 9px;
-    height: 9px;
-    left: 50%;
-    animation-delay: -0.9s;
-}
-
-.p-6 {
-    width: 18px;
-    height: 18px;
-    left: 60%;
-    animation-delay: -2.3s;
-}
-
-.p-7 {
-    width: 11px;
-    height: 11px;
-    left: 70%;
-    animation-delay: -3.8s;
-}
-
-.p-8 {
-    width: 14px;
-    height: 14px;
-    left: 80%;
-    animation-delay: -5.2s;
-}
-
-.p-9 {
-    width: 10px;
-    height: 10px;
-    left: 90%;
-    animation-delay: -0.6s;
-}
-
-.p-10 {
-    width: 16px;
-    height: 16px;
-    left: 15%;
-    animation-delay: -1.9s;
-}
-
-.p-11 {
-    width: 7px;
-    height: 7px;
-    left: 25%;
-    animation-delay: -3.4s;
-}
-
-.p-12 {
-    width: 13px;
-    height: 13px;
-    left: 35%;
-    animation-delay: -4.1s;
-}
-
-.p-13 {
-    width: 8px;
-    height: 8px;
-    left: 45%;
-    animation-delay: -0.4s;
-}
-
-.p-14 {
-    width: 20px;
-    height: 20px;
-    left: 55%;
-    animation-delay: -2.7s;
-}
-
-.p-15 {
-    width: 12px;
-    height: 12px;
-    left: 65%;
-    animation-delay: -3.9s;
-}
-
-.p-16 {
-    width: 15px;
-    height: 15px;
-    left: 75%;
-    animation-delay: -5.5s;
-}
-
-.p-17 {
-    width: 9px;
-    height: 9px;
-    left: 85%;
-    animation-delay: -0.8s;
-}
-
-.p-18 {
-    width: 17px;
-    height: 17px;
-    left: 5%;
-    animation-delay: -2.1s;
-}
-
-.p-19 {
-    width: 6px;
-    height: 6px;
-    left: 95%;
-    animation-delay: -3.6s;
-}
-
-.p-20 {
-    width: 14px;
-    height: 14px;
-    left: 48%;
-    animation-delay: -4.3s;
-}
-
-.p-21 {
-    width: 11px;
-    height: 11px;
-    left: 12%;
-    animation-delay: -0.1s;
-}
-
-.p-22 {
-    width: 19px;
-    height: 19px;
-    left: 28%;
-    animation-delay: -2.5s;
-}
-
-.p-23 {
-    width: 8px;
-    height: 8px;
-    left: 42%;
-    animation-delay: -3.3s;
-}
-
-.p-24 {
-    width: 13px;
-    height: 13px;
-    left: 58%;
-    animation-delay: -5.0s;
-}
-
-.p-25 {
-    width: 10px;
-    height: 10px;
-    left: 72%;
-    animation-delay: -0.7s;
-}
-
-.p-26 {
-    width: 16px;
-    height: 16px;
-    left: 88%;
-    animation-delay: -2.9s;
-}
-
-.p-27 {
-    width: 12px;
-    height: 12px;
-    left: 8%;
-    animation-delay: -3.7s;
-}
-
-.p-28 {
-    width: 18px;
-    height: 18px;
-    left: 38%;
-    animation-delay: -5.8s;
-}
-
-.p-29 {
-    width: 9px;
-    height: 9px;
-    left: 68%;
-    animation-delay: -0.3s;
-}
-
-.p-30 {
-    width: 15px;
-    height: 15px;
-    left: 92%;
-    animation-delay: -2.0s;
-}
-
-.fire-glow {
-    position: absolute;
-    bottom: -150px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(255, 120, 0, 0.4) 0%, rgba(0, 0, 0, 0) 70%);
-    filter: blur(30px);
-    z-index: 0;
-}
-
-/* --- NUEVA Animación Caótica de ascenso --- */
-@keyframes chaotic-rise {
-    0% {
-        transform: translateY(0) translateX(0) scale(1);
-        opacity: 0;
-    }
-
-    10% {
-        opacity: 0.9;
-        /* Aparecen rápido y brillantes */
-    }
-
-    30% {
-        transform: translateY(-25vh) translateX(30px) scale(0.8);
-        /* Se mueven a la derecha */
-        opacity: 0.8;
-    }
-
-    60% {
-        transform: translateY(-60vh) translateX(-30px) scale(1.1);
-        /* Zig-zag a la izquierda y crecen */
-        opacity: 0.7;
-    }
-
-    85% {
-        opacity: 0.5;
-    }
-
-    100% {
-        transform: translateY(-110vh) translateX(20px) scale(0.4);
-        /* Ascienden caóticamente y se achican */
-        opacity: 0;
-        /* Desaparecen arriba */
-    }
-}
-
-.mineral-fire-wrapper {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    z-index: 1;
-    display: none;
-    background: #000;
-}
-
-.mineral-fire-effect .mineral-fire-wrapper {
-    display: block;
-}
-
-.particle {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(3px);
-    opacity: 0.8;
-    /* Unimos el baile caótico y el cambio de color */
-    animation:
-        mineral-dance 3s infinite ease-in-out,
-        color-shift 8s infinite linear;
-}
-
-/* El baile: se mueven de forma errática en su zona */
-@keyframes mineral-dance {
-
-    0%,
-    100% {
-        transform: translate(0, 0) scale(1);
-    }
-
-    25% {
-        transform: translate(15px, -15px) scale(1.2);
-    }
-
-    50% {
-        transform: translate(-20px, 10px) scale(0.8);
-    }
-
-    75% {
-        transform: translate(10px, 20px) scale(1.1);
-    }
-}
-
-/* La transmutación: la misma partícula cambia de mineral */
-@keyframes color-shift {
-
-    0%,
-    100% {
-        background: hsl(150, 95%, 70%);
-        /* Cobre - Verde */
-        box-shadow: 0 0 15px hsl(150, 95%, 70%);
-    }
-
-    25% {
-        background: hsl(350, 95%, 65%);
-        /* Estroncio - Rojo */
-        box-shadow: 0 0 15px hsl(350, 95%, 65%);
-    }
-
-    50% {
-        background: hsl(210, 95%, 70%);
-        /* Plomo - Azul */
-        box-shadow: 0 0 15px hsl(210, 95%, 70%);
-    }
-
-    75% {
-        background: hsl(45, 95%, 70%);
-        /* Sodio - Amarillo */
-        box-shadow: 0 0 15px hsl(45, 95%, 70%);
-    }
-}
-
-
-.mineral-fire-wrapper {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    z-index: 1;
-    display: none;
-    background: #000;
-    /* Fondo negro profundo */
-}
-
-.mineral-fire-effect .mineral-fire-wrapper {
-    display: block;
+    --particle-color: hsl(45, 100%, 60%);
+    --particle-dim: hsl(45, 80%, 20%);
 }
 
 .particle {
     position: absolute;
     bottom: -10%;
-    /* Empiezan abajo de la pantalla */
     border-radius: 50%;
     opacity: 0;
-    /* Combinamos las 3 animaciones */
-    animation:
-        mineral-rise infinite linear,
-        mineral-sway infinite ease-in-out,
-        mineral-pulse infinite ease-in-out;
-    transition: background 1s ease-in-out, box-shadow 1s ease-in-out;
+    will-change: transform;
+    animation: mineral-rise linear forwards, mineral-sway infinite ease-in-out;
 }
 
-/* --- Definición de Profundidad --- */
-
-/* Partículas Frontales: Pequeñas y muy brillantes */
 .particle-front {
-    width: 8px;
-    height: 8px;
-    filter: blur(1px);
-    /* Poca difuminación */
+    width: 10px;
+    height: 10px;
     z-index: 3;
-    /* Enfrente */
-    background: var(--mineral-bright);
-    box-shadow: 0 0 15px 2px var(--mineral-bright);
+    background: radial-gradient(circle, var(--particle-color) 0%, rgba(0, 0, 0, 0) 80%);
 }
 
-/* Partículas Traseras: Grandes y apagadas */
 .particle-back {
-    width: 25px;
-    height: 25px;
-    filter: blur(6px);
-    /* Muy difuminadas */
+    width: 35px;
+    height: 35px;
     z-index: 2;
-    /* Atrás */
-    background: var(--mineral-dim);
-    box-shadow: 0 0 10px 1px var(--mineral-dim);
+    background: radial-gradient(circle, var(--particle-dim) 0%, rgba(0, 0, 0, 0) 80%);
+    opacity: 0.4;
 }
-
-/* --- Lógica de Transmutación de Color (Variables CSS) --- */
-
-/* 1. Cobre - Verde */
-.mineral-fire-wrapper[data-mineral="copper"] {
-    --mineral-bright: hsl(150, 100%, 49%);
-    --mineral-dim: hsl(150, 60%, 18%);
-}
-
-/* 2. Estroncio - Rojo */
-.mineral-fire-wrapper[data-mineral="strontium"] {
-    --mineral-bright: hsl(350, 100%, 49%);
-    --mineral-dim: hsl(350, 60%, 18%);
-}
-
-/* 3. Plomo - Azul */
-.mineral-fire-wrapper[data-mineral="lead"] {
-    --mineral-bright: hsl(210, 95%, 75%);
-    --mineral-dim: hsl(210, 60%, 30%);
-}
-
-/* 4. Sodio - Amarillo */
-.mineral-fire-wrapper[data-mineral="sodium"] {
-    --mineral-bright: hsl(45, 100%, 49%);
-    --mineral-dim: hsl(45, 60%, 18%);
-}
-
 
 @keyframes mineral-rise {
     0% {
@@ -924,11 +325,11 @@ html {
         opacity: 0;
     }
 
-    10% {
+    15% {
         opacity: 0.8;
     }
 
-    90% {
+    85% {
         opacity: 0.8;
     }
 
@@ -938,7 +339,6 @@ html {
     }
 }
 
-
 @keyframes mineral-sway {
 
     0%,
@@ -947,22 +347,10 @@ html {
     }
 
     33% {
-        transform: translateX(50px);
+        transform: translateX(40px);
     }
 
     66% {
-        transform: translateX(-50px);
-    }
-}
-
-@keyframes mineral-pulse {
-
-    0%,
-    100% {
-        scale: 1;
-    }
-
-    50% {
-        scale: 1.3;
+        transform: translateX(-40px);
     }
 }
